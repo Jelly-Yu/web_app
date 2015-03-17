@@ -1,0 +1,248 @@
+.logoutclass 
+{
+    border: 0px solid #CD0000;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.1, #FF1A00), color-stop(0.9, #CD0000) );
+    background: -moz-linear-gradient( center top, #FF1A00 10%, #CD0000 90% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF1A00', endColorstr='#CD0000');
+    background-color: #FF1A00;
+    padding: 10px;
+    text-shadow: none;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 5px;
+
+    font-weight: bold;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    width: 60px;
+    height:21px;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.logoutclass:hover 
+{
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.1, #CD0000), color-stop(0.9, #FF1A00) );
+    background: -moz-linear-gradient( center top, #CD0000 10%, #FF1A00 90% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CD0000', endColorstr='#FF1A00');
+    background-color: #CD0000;
+
+}
+.logoutclass:active 
+{
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+a
+{
+  text-decoration: none;
+}
+
+@import "bootstrap";
+
+body 
+{
+    background:
+    url('http://www.widescreenbackgrounds.net/wallpapers/background-original-widescreen-wooden-wallpapers.jpg');
+    color: #333;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 100%;
+    margin:0 auto;
+    text-align:left;
+    padding: 0; 
+    color: #000; 
+    background-color: #FFF; 
+
+}
+#fHead
+{ 
+	 color: #FFF; 
+	 font-size: 10pt; 
+	 font-weight: bold; 
+	 padding: 5px; 
+	 text-align:center;
+}
+.container 
+{
+	 margin: 10px auto;
+	 width: 640px;
+	
+}
+.content 
+{
+    position: relative;
+    margin: 0 auto;
+    padding: 10px 20px 10px;
+    width: 450px;
+    border-radius: 3px;
+  
+ 
+}
+.signup
+{
+  margin-top: 20px;
+  padding: 30px 20px 10px;
+  width: 430px;
+  border-radius: 3px;
+  background:#fff;
+  height:330px;
+}
+.signin
+{
+  padding: 10px 20px 20px;
+  width: 430px;
+  margin-top:0;
+  border-radius: 3px;
+  background:#fff;
+  height:100px;
+}
+.footer
+{
+    width: 310px;
+    position:relative;
+    margin-left: 4px;
+    margin-top:25px;
+    a
+    {
+      
+      margin-left: 24px;
+    }
+  
+}
+h1 
+{
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+input, textarea, select, .uneditable-input 
+{
+    border: 1px solid #bbb;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    height:40px;
+  
+}
+#container
+{
+    margin:0 auto;
+    text-align:left;
+    width:850px;
+    height:750px;
+    h1
+	{
+   		color:#BA0016;
+
+	}
+
+  
+}
+#main 
+{
+    vertical-align:top;
+    padding-bottom:5px;
+    width:100%;
+   
+
+}
+#center
+{
+  position:absolute;
+  width:850px;
+  text-align:center;
+  height:700px;
+  background: #fff;
+  border-radius:5px;
+}
+#cenDoc
+{
+	position:absolute;
+  width:850px;
+  text-align:center;
+  line-height:40px;
+  border-radius:5px;
+	background: #fff url(1.png) no-repeat;
+	background-position: 40% 100%; 
+	background-size:30%;
+	overflow:auto;
+	margin:0px 0px 10px 0px;
+	height:640px;
+	h1
+	{
+   		color:#007FFF;
+   		font-family:elephant,andy,helvetica,sans-serif;
+   		font-size:40px;
+   		line-height:50px;
+	}
+	h2
+	{
+  		font-family:Segoe Keycaps,cooper black;
+  		font-size:50px;
+  		line-height:100px;
+	}
+	p
+	{
+		font-size:20px;
+
+	}
+	h4
+  {
+      color:#D40000;
+      font-family:sans-serif;
+  }
+  #tr_id
+  {
+      color: black;
+      font-family:sans-serif;
+      font-size:20px;
+      padding: 10px;
+      background-color: #007FFF;
+
+
+
+  }
+ 
+	td,th,tr
+	{
+  		font-family: verdana, arial, helvetica, sans-serif;
+  		font-size: 20px;
+  		line-height: 18px;
+  		padding: 12px;
+  		text-align:center;
+	}
+}
+#footer
+{
+  position:absolute;
+  margin-top: 720px;
+	width:840px;
+	background-color: EEE; 
+	color:#FFF;
+	border-top: 1px solid #000; 
+	padding: 5px; 
+	text-align: center; 
+	font-size: 15px; 
+}
+#message
+{
+  height:60px;
+
+
+}
+#error_explanation 
+{
+  color: #f00;
+  ul 
+  {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}

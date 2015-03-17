@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Table Tennis Club</title>
+		<%= stylesheet_link_tag "application", :media => "all"  %>
+	</head>
+	<body>
+		<div id="container" >
+			<div class="page-header">
+				<h1>Table Tennis Club
+					<small>Enjoy yourself</small>
+				</h1>
+			</div>
+			<div id = "main">
+				<div class="navbar">
+					<div class="navbar-inner">
+						
+						<ul class="nav">
+							<li class="divider-vertical"></li>
+							<li><%= link_to "Home", user_path(session[:current_user_id])%></li>
+								<li class="divider-vertical"></li>
+								<li class="divider-vertical"></li>
+							
+							<li><%= link_to "Rank", :controller => :users, :action => 'index'%></li>
+							<li class="divider-vertical"></li>
+							<li class="divider-vertical"></li>
+							
+							<li><%= link_to "Challenges", :controller => :matches, :action=> 'challenge'%></li>
+							<li class="divider-vertical"></li>
+							<li class="divider-vertical"></li>
+							
+							<li><%= link_to "Results",:controller => :matches, :action=> 'result'%></li>
+							<li class="divider-vertical"></li>
+							<li class="divider-vertical"></li>
+							
+							<li><%= link_to "Statistics",:controller => :matches, :action=> 'history'%></li>
+							<li class="divider-vertical"></li>
+							<li class="divider-vertical"></li>
+							<%= link_to "Logout", log_out_path, :class => "logoutclass"%>
+								
+						</ul>
+					</div>
+				</div>
+				<div id="center">
+					<div id="message">
+					<% if flash[:success] %>
+						<div class="alert alert-success">
+							<%= flash[:success] %>
+						</div>
+						<% end %>
+					</div>
+				<div id="cenDoc">					
+						<%= yield :cenDoc%>
+					</div>
+				</div>
+				</div>
+			<div id="footer">©2013 DIT</div> 
+		</div>
+	</div>
+</body>
+</html>

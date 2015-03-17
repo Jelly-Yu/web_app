@@ -1,0 +1,9 @@
+<% content_for :cenDoc do %>
+<h1>Editing match</h1>
+<p>Result:</p>
+<%= form_for(@match) do |f| %>
+<%= f.radio_button(:winner, @match.player1, :checked=> true) %>Win
+<%= f.radio_button(:winner, @match.player2) %>Lose 
+<%= f.submit "Update",class: "btn btn-primary"%>
+<% end %>
+<% end %>

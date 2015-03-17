@@ -1,0 +1,161 @@
+<% content_for :cenDoc do %>
+<% @u = User.find(session[:current_user_id])%>
+
+<h1>Matches History</h1>
+<% if @matches.count == 0 %>
+    <h4><%=  "Notice: You have no matches finished "%></h4>
+    <% else %>
+<table class="table">
+  
+  <tr>
+    <th>Challenger</th>
+    <th>Oponent</th>
+    <th>Match date</th>
+    <th>State</th>
+    <th>WinnerID</th> 
+    <th>WinnerName</th> 
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <% @user = User.get_user(match.player1) %>
+    <td><%= @user.name %></td>
+    <% @user = User.get_user(match.player2) %>
+    <td><%= @user.name %></td>
+    <td><%= match.mDate %></td>
+    <td><%= match.state %></td>
+    <td><%= match.winner %></td>
+    <% @user = User.get_user(match.winner) %>
+    <td><%= @user.name %></td>
+  </tr> 
+<% end %>
+</table>
+
+<body onload="draw()">
+  <tr><h3>Progress Chart<h3></tr>
+  <tr>
+    <canvas id="graph" width="470" height="220" style="border:1px solid #000000"></canvas> 
+  </tr>
+</body>
+<script type="application/javascript">
+
+    var matchCount = <%= @matches.count%>;
+    var userId = <%= @u.id %>
+    //document.write("userId = "+ userId);
+    var xPath;
+    var userPoints = new Array();
+    var user;
+    var pointsTot=0;
+    
+   // document.write("</br>Mach count= "+ matchCount);
+   // document.write(", UserId: "+ userId);
+    
+    //assign points to current user
+    for(var i=2; i<matchCount+2; i++){
+        xPath = 'number(.//*/table[1]/tbody/tr['+i+']/td[5])';
+        //document.write("</br>" + 'xPath:' + xPath);
+        user = document.evaluate( xPath, document, null, XPathResult.ANY_TYPE, null);
+        //document.write("user= " + user.numberValue + "</br>");
+        if(user.numberValue == userId){
+            userPoints.push(50);
+        }
+        else{
+            userPoints.push(0);
+        }
+    }
+    
+    //print out points
+    //for(var i=0; i<userPoints.length; i++){
+    //    document.write("</br>" + 'userPoins:' + userPoints[i]);
+    //}
+    
+    //totalPoint
+    for(var i=0; i<userPoints.length; i++){
+      pointsTot=pointsTot+userPoints[i];
+    }
+    //pointsTot=pointsTot+100;
+    //document.write("</br>" + "Points total:" + pointsTot);
+    
+    //==================Start of graphics======================
+    function draw(){
+     var c=document.getElementById("graph");
+      var pen=c.getContext("2d");
+      var pen=c.getContext("2d")
+      pen.beginPath();
+    
+      var colDist = 450/matchCount;
+      var rowDist = 200/(pointsTot/50);
+    
+    //======================== Grid ===========================
+      //Vertical grid
+      pen.strokeStyle = '#00cc00';
+      pen.lineWidth = 1;
+    
+      for(var i=1; i<matchCount; i++){
+       pen.moveTo(20+i*colDist, 200);
+        pen.lineTo(20+i*colDist,0);
+        pen.stroke();
+      }
+    
+     //Horizontal grid
+      pen.lineWidth = 1;
+      for(var i=1; i<pointsTot/50; i++){
+        pen.moveTo(470, i*rowDist);
+        pen.lineTo(20,i*rowDist);
+        pen.stroke();
+      }
+    
+      //Vertical base
+      pen.beginPath();
+      pen.moveTo(20,200);
+      pen.strokeStyle = '#000000';
+      pen.lineWidth = 1;
+      pen.lineTo(20,0);
+      pen.stroke();
+    
+      //Horizontal base
+      pen.beginPath();
+      pen.moveTo(20,200);
+      pen.strokeStyle = '#000000';
+      pen.lineWidth = 1;
+      pen.lineTo(470,200);
+      pen.stroke();
+    //======================= Labels ==========================
+     var c =document.getElementById("graph");
+     var label = c.getContext("2d");
+     var labelText=100;
+      
+      label.font="11px Arial";
+    
+      //points
+      for(var i=0; i<pointsTot/50; i++){
+        label.fillText(100+i*50, 0,202-i*rowDist);
+      }
+      label.rotate(-Math.PI/2);
+      label.font="13px Arial";
+      label.fillText("Points", -120,35);
+      
+      //games played
+      label.font="11px Arial";
+      label.rotate(Math.PI/2);
+      for(var i=0; i<matchCount; i++){
+        //label.fillText(i, i*colsDist-4,195);
+        label.fillText(i, 20+i*colDist-2,215);
+      }
+      label.font="13px Arial";
+      label.fillText("Games played", 210,195);
+    //======================= Graph ==========================
+      pen.beginPath();
+      pen.moveTo(20,200);
+      pen.strokeStyle = 'blue';
+      pen.lineWidth = 5;
+      var pointCounter=0;
+      for(var i=0; i<matchCount; i++){
+       pointCounter = pointCounter + userPoints[i];
+       pen.lineTo(20+(i+1)*colDist,200 - pointCounter*(200/pointsTot));
+       pen.stroke();
+      }
+    }
+  </script>
+  <% end %>
+<% end %>

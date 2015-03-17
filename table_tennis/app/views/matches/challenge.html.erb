@@ -1,0 +1,32 @@
+<% content_for :cenDoc do %>
+<h1>Challenges you have received</h1>
+
+<table class="table">
+   <% if @matches.count == 0 %>
+    <h4><%=  "Notice: You have no challenges "%></h4>
+    <% else %>
+  <tr>
+    <th>Challenger</th>
+    <th>Email</th>
+    <th>Date</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <% @user = User.get_user(match.player1) %>
+    <td><%= @user.name %></td>
+    <td><%= @user.email %></td>
+    <td><%= match.mDate %></td>
+    <td><%= link_to "Accept", {:controller => 'matches', :action => 'decision', :mid => match, :commit => "Accept"}, :class =>"btn btn-primary"%></td>
+    <td><%= link_to "Refuse", {:controller => 'matches', :action => 'decision', :mid => match, :commit => "Refuse"}, :class =>"btn btn-primary"%></td>
+  </tr>
+<% end %>
+<tr>
+
+</tr>
+<% end %>
+</table>
+
+<% end %>

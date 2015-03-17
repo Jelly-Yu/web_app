@@ -1,0 +1,36 @@
+<% content_for :cenDoc do %>
+<h1>All players</h1>
+<% count = 0%>
+<table class="table table-hover">
+  <tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Points</th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+<% if user.id != session[:current_user_id] %>
+  <tr>
+    <td><%= count +1 %></td> 
+    <%count = count +1 %>
+    <td><%= user.name %></td>
+    <td><%= user.points %></td>
+    
+    <td><%= link_to 'Challenge', :controller => 'matches', :action => 'new', :id=>user %></td>
+  </tr>
+<% else %>
+<tr id="tr_id">
+    <td><%= count +1 %></td> 
+    <%count = count +1 %>
+    <td><%= user.name %></td>
+    <td><%= user.points %></td>
+    <td><b><%= "You are here"%></b></td>
+  </tr>
+    
+<% end %>
+  </tr>
+<% end %>
+</table>
+
+<%end%>

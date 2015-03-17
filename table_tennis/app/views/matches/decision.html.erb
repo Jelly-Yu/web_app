@@ -1,0 +1,14 @@
+<% content_for :cenDoc do %>
+<h1>Your decision</h1>
+<p>Once you choose one, you cannot make any change</p>
+<table class="table ">
+
+<%= form_for :match, :url => { :action => "decision" }, :html => { :method => 'put' }  do |f| %>
+<tr>
+    <th><%= submit_tag "Accept", class: "btn btn-primary"%></th>
+    <th><%= submit_tag "Refuse", class: "btn btn-primary"%></th>
+<% end %>
+</tr>
+
+</table>
+<% end %>

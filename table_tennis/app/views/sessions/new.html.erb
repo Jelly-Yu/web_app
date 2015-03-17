@@ -1,0 +1,43 @@
+<div class ="container" >
+  <div id="fHead">
+    <h1>Welcome to Table Tennis Club </h1>
+  </div>
+  <div class="content">
+    <div class = "signin">
+      <table>
+        <tr><h3>Login</h3></tr>
+        <%= form_for(:session, url: sessions_path) do |f| %>
+        <tr>
+          <td><%= f.label :email %></td>
+          <td><%= f.text_field :email %></td>
+          <td></td>
+          <td></td>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= f.submit "Login" ,class: "btn btn-primary"%></td>
+        </tr>
+        <%end %>
+      </table>
+    </div>
+    <div class = "signup">
+      <h3>Sign up</h3>   
+      <% @user = User.new %>
+      <%= form_for(@user) do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+      <div class="footer">
+        <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<% content_for :cenDoc do %>
+<h1>Matches with pending result</h1>
+
+<table class="table">
+  <% if @matches.count == 0 %>
+    <h4><%=  "Notice: You have no pending matches "%></h4>
+    <% else %>
+  <tr>
+    <th>Challenger</th>
+    <th>Oponent</th>
+    <th>Date</th>
+    <th>State</th>
+    <th>Winner</th>
+    <th></th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <% @user = User.get_user(match.player1) %>
+    <td><%= @user.name %></td>
+    <% @user = User.get_user(match.player2) %>
+    <td><%= @user.name %></td>
+    <td><%= match.mDate %></td>
+    <td><%= match.state %></td>
+    <td><%= match.winner %></td>
+    <td><%= link_to 'Edit', edit_match_path(match) %></td>
+  </tr>
+<% end %>
+<tr>
+
+</tr>
+<% end %>
+</table>
+
+<% end %>

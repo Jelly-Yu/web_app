@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  player1: 1
+  player2: 1
+  mDate: 2013-04-17
+  status: MyString
+  winner: MyString
+
+two:
+  player1: 1
+  player2: 1
+  mDate: 2013-04-17
+  status: MyString
+  winner: MyString
